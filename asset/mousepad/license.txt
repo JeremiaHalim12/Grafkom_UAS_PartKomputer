@@ -1,0 +1,11 @@
+Model Information:
+* title:	mouse pad (keyboard pad)
+* source:	https://sketchfab.com/3d-models/mouse-pad-keyboard-pad-7690f727d87847aaa737c8110c8e6531
+* author:	mfk (https://sketchfab.com/mfkffzl)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "mouse pad (keyboard pad)" (https://sketchfab.com/3d-models/mouse-pad-keyboard-pad-7690f727d87847aaa737c8110c8e6531) by mfk (https://sketchfab.com/mfkffzl) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

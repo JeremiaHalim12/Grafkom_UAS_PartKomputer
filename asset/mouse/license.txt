@@ -1,0 +1,11 @@
+Model Information:
+* title:	Ice Claw mouse
+* source:	https://sketchfab.com/3d-models/ice-claw-mouse-43de4d030ae94667bd8b8a478dd371ac
+* author:	dmitriy7776661111 (https://sketchfab.com/dmitriy7776661111)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Ice Claw mouse" (https://sketchfab.com/3d-models/ice-claw-mouse-43de4d030ae94667bd8b8a478dd371ac) by dmitriy7776661111 (https://sketchfab.com/dmitriy7776661111) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
