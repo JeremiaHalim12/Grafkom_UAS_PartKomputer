@@ -37,6 +37,27 @@ var room = lib.modelLoader(
     { x: Math.PI / 2, y: Math.PI, z: Math.PI / 2 }, 
     {x: 9, y: 0, z: 33});
 
+// AUDIO
+const listener = new THREE.AudioListener();
+const audioLoader = new THREE.AudioLoader();
+const audio = new THREE.Audio(listener);
+
+audioLoader.load("asset/audio/AUDIO.mp3", function (buffer) {
+  audio.setBuffer(buffer);
+  audio.setLoop(true);
+  audio.setVolume(0.5);
+  audio.play();
+});
+
+//SOFA
+var sofa = lib.modelLoader(
+    scene, 
+    'asset/sofa/scene.gltf', 
+    { x: 0.035, y: 0.035, z: 0.035 },
+    { x: Math.PI/2, y: Math.PI, z: 0 },
+    { x: -5, y: 0, z: 15 }
+);
+
 // KEYBOARD
 var keyboard = lib.modelLoader(
     scene, 
