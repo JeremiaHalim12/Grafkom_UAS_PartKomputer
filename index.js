@@ -29,13 +29,16 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(cam, renderer.domElement);
 
 // 3D MODEL
-// ROOM
 var room = lib.modelLoader(
     scene, 
     'asset/room/scene.gltf', 
     { x: 18, y: 18, z: 18 }, 
     { x: Math.PI / 2, y: Math.PI, z: Math.PI / 2 }, 
-    {x: 9, y: 0, z: 33});
+    {x: 9, y: 0, z: 33},
+    cam,
+    false
+    );
+
 
 // AUDIO
 const listener = new THREE.AudioListener();
@@ -49,14 +52,15 @@ audioLoader.load("asset/audio/AUDIO.mp3", function (buffer) {
   audio.play();
 });
 
-//SOFA
-var sofa = lib.modelLoader(
-    scene, 
-    'asset/sofa/scene.gltf', 
-    { x: 0.035, y: 0.035, z: 0.035 },
-    { x: Math.PI/2, y: Math.PI, z: 0 },
-    { x: -5, y: 0, z: 15 }
-);
+// //SOFA
+// var sofa = lib.modelLoader(
+//     scene, 
+//     'asset/sofa/scene.gltf', 
+//     { x: 0.035, y: 0.035, z: 0.035 },
+//     { x: Math.PI/2, y: Math.PI, z: 0 },
+//     { x: -5, y: 0, z: 15 }
+// );
+
 
 // KEYBOARD
 var keyboard = lib.modelLoader(
@@ -64,7 +68,11 @@ var keyboard = lib.modelLoader(
     'asset/keyboard/scene.gltf', 
     { x: 0.008, y: 0.008, z: 0.008 },
     {x: Math.PI / 2, y: Math.PI, z: Math.PI},
-    {x: -5.4, y: 10.7, z: 3},);
+    {x: -5.4, y: 10.7, z: 3},
+    cam, 
+    true,
+    { x: -2.7, y: MATH.PI, z: 5 }
+);
 
 // MOUSE
 var mouse = lib.modelLoader(
@@ -72,7 +80,11 @@ var mouse = lib.modelLoader(
     'asset/mouse/scene.gltf', 
     { x: 0.002, y: 0.002, z: 0.002 },
     {x: Math.PI / 2, y: 0, z: Math.PI / 2},
-    {x: 4.2, y: 11.5, z: 3},);
+    {x: 4.2, y: 11.5, z: 3},
+    cam, 
+    true,
+    { x: 4.2, y: 12.5, z: 5 }
+);
 
 // MONITOR
 var monitor = lib.modelLoader(
@@ -80,7 +92,11 @@ var monitor = lib.modelLoader(
     'asset/monitor/scene.gltf', 
     { x: 1.2, y: 1, z: 1},
     {x: Math.PI / 2, y: 0, z: Math.PI},
-    {x: -3, y: 15.2, z: 0},);
+    {x: -3, y: 15.2, z: 0},
+    cam,
+    true,
+    { x: -2.2, y: 14.5, z: 2 }
+);
 
 // PC
 var pc = lib.modelLoader(
@@ -88,7 +104,10 @@ var pc = lib.modelLoader(
     'asset/pc/scene.gltf', 
     { x: 0.78, y: 0.78, z: 0.78},
     {x: Math.PI/2, y: Math.PI, z: Math.PI},
-    {x: 10, y: 15, z: 1.4},);
+    {x: 10, y: 15, z: 1.4},
+    cam,
+    true
+);
 
 // MOUSEPAD
 var mousepad = lib.modelLoader(
@@ -96,7 +115,10 @@ var mousepad = lib.modelLoader(
     'asset/mousepad/scene.gltf', 
     { x: 0.7, y: 0.7, z: 0.7},
     {x: Math.PI/2, y: Math.PI, z: Math.PI},
-    {x: -2, y: 10.2, z: 1.7},);
+    {x: -2, y: 10.2, z: 1.7},
+    cam,
+    false
+    );
 
 // TABLE
 var table = lib.modelLoader(
@@ -104,7 +126,10 @@ var table = lib.modelLoader(
     'asset/table/scene.gltf', 
     { x: 8, y: 8, z: 8},
     {x: Math.PI/2, y: Math.PI, z: Math.PI},
-    {x: 0, y: 0, z: 0},);
+    {x: 0, y: 0, z: 0},
+    cam,
+    false
+    );
 
 // CHAIR
 var chair = lib.modelLoader(
@@ -112,8 +137,10 @@ var chair = lib.modelLoader(
     'asset/chair/scene.gltf', 
     { x: 0.035, y: 0.035, z: 0.035},
     {x: Math.PI/2, y: Math.PI, z: 0},
-    {x: -3.4, y: 0, z: 15},);
-
+    {x: -3.4, y: 0, z: 15},
+    cam,
+    false
+    );
 // PLANE
 const plane = new THREE.PlaneGeometry(1000, 1000, 500, 500);
 const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
