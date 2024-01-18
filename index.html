@@ -1,25 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tugas Besar UAS</title>
     <style>
-        body{
+        body {
             margin: 0;
             overflow: hidden;
         }
+
+        #button1 {
+            position: absolute;
+        }
+
+        #pointer {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            background-color: red;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        #blocker {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        #instructions {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            font-size: 14px;
+            cursor: pointer;
+        }
     </style>
 </head>
+
 <body>
+    <div id="blocker">
+        <div id="instructions">
+            <p style="font-size:36px">
+                Click to play
+            </p>
+            <p>
+                Move: WASD<br />
+                Look: MOUSE
+            </p>
+        </div>
+    </div>
+    <div id="pointer"></div>
+    <!-- <button id="button1">Locked</button> -->
     <script type="importmap">
-        {
-            "imports" :{
-                "three" : "./node_modules/three/build/three.module.js"
-            }
+      {
+        "imports": {
+          "three": "./node_modules/three/build/three.module.js"
         }
+      }
     </script>
-    <script type ="module" src="index.js"></script>
+    <script type="module" src="index.js"></script>
 </body>
+
 </html>
+
+<!-- https://stackoverflow.com/questions/18546875/three-js-pointerlock-and-collision-detection -->
+<!-- https://threejs.org/docs/#api/en/core/Object3D.lookAt -->
+
+<!-- audio -->
+<!-- https://www.loginradius.com/blog/engineering/adding-multi-threading-to-javascript-using-web-workers/ -->
+
+<!-- room -->
+<!-- https://sketchfab.com/3d-models/teascroll-clubhouse-empty-room-4d332158ef064340a29c1af90715410d -->
+<!-- https://sketchfab.com/3d-models/empty-white-room-final-4a9210afcba74f3eba799a18751d75f3 -->

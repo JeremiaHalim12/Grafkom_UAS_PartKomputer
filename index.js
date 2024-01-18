@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "./node_modules/three/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { PointerLockControls } from "./node_modules/three/examples/jsm/controls/PointerLockControls.js";
 import * as lib from './model_loader.js';
 
 // SCENE, CAMERA, RENDERER
@@ -26,33 +26,104 @@ cam.position.y = 17;
 cam.position.z = 22;
 
 document.body.appendChild(renderer.domElement);
-const controls = new OrbitControls(cam, renderer.domElement);
+// const controls = new OrbitControls(cam, renderer.domElement);
+
+let controls = new PointerLockControls(cam, renderer.domElement);
+let clock = new THREE.Clock();
+
+
+let pointerElement = document.querySelector('#pointer');
+
+// let btn1 = document.querySelector('#button1');
+// btn1.addEventListener('click', () => {
+//     controls.lock();
+// })
+
+instructions.addEventListener('click', function () {
+
+    controls.lock();
+
+});
+
+controls.addEventListener('lock', function () {
+
+    instructions.style.display = 'none';
+    blocker.style.display = 'none';
+
+});
+
+controls.addEventListener('unlock', function () {
+
+    blocker.style.display = 'block';
+    instructions.style.display = '';
+
+});
+
+let keyboardControls = [];
+addEventListener('keydown', (e) => {
+    keyboardControls[e.key] = true;
+});
+addEventListener('keyup', (e) => {
+    keyboardControls[e.key] = false;
+});
+
+function updatePointerPosition() {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    // Hitung posisi tengah layar
+    const centerX = screenWidth / 2;
+    const centerY = screenHeight / 2;
+
+    // Atur posisi pointer sesuai dengan posisi tengah layar
+    pointerElement.style.left = centerX + 'px';
+    pointerElement.style.top = centerY + 'px';
+}
+
+document.addEventListener('mousemove', (e) => updatePointerPosition(e));
+
+function processKeyboard(delta) {
+    let speed = 12;
+    let actualSpeed = speed * delta
+    if (keyboardControls['w']) {
+        controls.moveForward(actualSpeed);
+    }
+    if (keyboardControls['s']) {
+        controls.moveForward(-actualSpeed);
+    }
+    if (keyboardControls['a']) {
+        controls.moveRight(-actualSpeed);
+    }
+    if (keyboardControls['d']) {
+        controls.moveRight(actualSpeed);
+    }
+}
 
 // 3D MODEL
 var room = lib.modelLoader(
-    scene, 
-    'asset/room/scene.gltf', 
-    { x: 18, y: 18, z: 18 }, 
-    { x: Math.PI / 2, y: Math.PI, z: Math.PI / 2 }, 
-    {x: 9, y: 0, z: 33},
+    scene,
+    'asset/room/scene.gltf',
+    { x: 18, y: 18, z: 18 },
+    { x: Math.PI / 2, y: Math.PI, z: Math.PI / 2 },
+    { x: 9, y: 0, z: 33 },
     cam,
     false
-    );
+);
 
 
 // AUDIO
-const listener = new THREE.AudioListener();
-const audioLoader = new THREE.AudioLoader();
-const audio = new THREE.Audio(listener);
+// const listener = new THREE.AudioListener();
+// const audioLoader = new THREE.AudioLoader();
+// const audio = new THREE.Audio(listener);
 
-audioLoader.load("asset/audio/AUDIO.mp3", function (buffer) {
-  audio.setBuffer(buffer);
-  audio.setLoop(true);
-  audio.setVolume(0.5);
-  audio.play();
-});
+// audioLoader.load("asset/audio/AUDIO.mp3", function (buffer) {
+//   audio.setBuffer(buffer);
+//   audio.setLoop(true);
+//   audio.setVolume(0.5);
+//   audio.play();
+// });
 
-// //SOFA
+//SOFA
 // var sofa = lib.modelLoader(
 //     scene, 
 //     'asset/sofa/scene.gltf', 
@@ -63,84 +134,106 @@ audioLoader.load("asset/audio/AUDIO.mp3", function (buffer) {
 
 
 // KEYBOARD
-var keyboard = lib.modelLoader(
-    scene, 
-    'asset/keyboard/scene.gltf', 
+var keyboardModel = lib.modelLoader(
+    scene,
+    'asset/keyboard/scene.gltf',
     { x: 0.008, y: 0.008, z: 0.008 },
-    {x: Math.PI / 2, y: Math.PI, z: Math.PI},
-    {x: -5.4, y: 10.7, z: 3},
-    cam, 
+    { x: Math.PI / 2, y: Math.PI, z: Math.PI },
+    { x: -5.4, y: 10.7, z: 3 },
+    controls,
+    cam,
     true,
-    { x: -2.7, y: MATH.PI, z: 5 }
+    { x: -2.7, y: 13, z: 5 },
+    7,
+    -2.7,
+    15,
+    3
 );
 
 // MOUSE
 var mouse = lib.modelLoader(
-    scene, 
-    'asset/mouse/scene.gltf', 
+    scene,
+    'asset/mouse/scene.gltf',
     { x: 0.002, y: 0.002, z: 0.002 },
-    {x: Math.PI / 2, y: 0, z: Math.PI / 2},
-    {x: 4.2, y: 11.5, z: 3},
-    cam, 
+    { x: Math.PI / 2, y: 0, z: Math.PI / 2 },
+    { x: 4.2, y: 11.5, z: 3 },
+    controls,
+    cam,
     true,
-    { x: 4.2, y: 12.5, z: 5 }
+    { x: 4.2, y: 12.5, z: 5 },
+    7,
+    4,
+    15,
+    3
 );
 
 // MONITOR
 var monitor = lib.modelLoader(
-    scene, 
-    'asset/monitor/scene.gltf', 
-    { x: 1.2, y: 1, z: 1},
-    {x: Math.PI / 2, y: 0, z: Math.PI},
-    {x: -3, y: 15.2, z: 0},
+    scene,
+    'asset/monitor/scene.gltf',
+    { x: 1.2, y: 1, z: 1 },
+    { x: Math.PI / 2, y: 0, z: Math.PI },
+    { x: -3, y: 15.2, z: 0 },
+    controls,
     cam,
     true,
-    { x: -2.2, y: 14.5, z: 2 }
+    { x: -2.2, y: 14.5, z: 0.8 },
+    7,
+    10,
+    15,
+    2
 );
 
 // PC
 var pc = lib.modelLoader(
-    scene, 
-    'asset/pc/scene.gltf', 
-    { x: 0.78, y: 0.78, z: 0.78},
-    {x: Math.PI/2, y: Math.PI, z: Math.PI},
-    {x: 10, y: 15, z: 1.4},
+    scene,
+    'asset/pc/scene.gltf',
+    { x: 0.78, y: 0.78, z: 0.78 },
+    { x: Math.PI / 2, y: Math.PI, z: Math.PI },
+    { x: 10, y: 15, z: 1.4 },
+    controls,
     cam,
-    true
+    true,
+    { x: 10, y: 14.5, z: 0.8 },
+    7,
+    3,
+    15,
+    2
 );
 
 // MOUSEPAD
 var mousepad = lib.modelLoader(
-    scene, 
-    'asset/mousepad/scene.gltf', 
-    { x: 0.7, y: 0.7, z: 0.7},
-    {x: Math.PI/2, y: Math.PI, z: Math.PI},
-    {x: -2, y: 10.2, z: 1.7},
+    scene,
+    'asset/mousepad/scene.gltf',
+    { x: 0.7, y: 0.7, z: 0.7 },
+    { x: Math.PI / 2, y: Math.PI, z: Math.PI },
+    { x: -2, y: 10.2, z: 1.7 },
     cam,
-    false
-    );
+    false,
+);
 
 // TABLE
 var table = lib.modelLoader(
-    scene, 
-    'asset/table/scene.gltf', 
-    { x: 8, y: 8, z: 8},
-    {x: Math.PI/2, y: Math.PI, z: Math.PI},
-    {x: 0, y: 0, z: 0},
+    scene,
+    'asset/table/scene.gltf',
+    { x: 8, y: 8, z: 8 },
+    { x: Math.PI / 2, y: Math.PI, z: Math.PI },
+    { x: 0, y: 0, z: 0 },
     cam,
-    false
-    );
+    false,
+);
 
 // CHAIR
 var chair = lib.modelLoader(
-    scene, 
-    'asset/chair/scene.gltf', 
-    { x: 0.035, y: 0.035, z: 0.035},
-    {x: Math.PI/2, y: Math.PI, z: 0},
-    {x: -3.4, y: 0, z: 15},
+    scene,
+    'asset/chair/scene.gltf',
+    { x: 0.035, y: 0.035, z: 0.035 },
+    { x: Math.PI / 2, y: Math.PI, z: 0 },
+    { x: -3.4, y: 0, z: 15 },
     cam,
-    false
-    );
+    false,
+);
+
 // PLANE
 const plane = new THREE.PlaneGeometry(1000, 1000, 500, 500);
 const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff });
@@ -180,7 +273,10 @@ scene.add(spotlight);
 // SHOW MODEL
 function animate() {
     requestAnimationFrame(animate);
-    controls.update();
+    // controls.update();
+    updatePointerPosition()
+    let delta = clock.getDelta();
+    processKeyboard(delta);
     renderer.render(scene, cam);
 }
 
