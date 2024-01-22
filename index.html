@@ -1,64 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tugas Besar UAS</title>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-        }
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
 
-        #button1 {
-            position: absolute;
-        }
+      #pointer {
+        position: fixed;
+        width: 5px;
+        height: 5px;
+        background-color: red;
+        border-radius: 50%;
+        pointer-events: none;
+      }
 
-        #pointer {
-            position: fixed;
-            width: 5px;
-            height: 5px;
-            background-color: red;
-            border-radius: 50%;
-            pointer-events: none;
-        }
+      #blocker {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+      }
 
-        #blocker {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.5);
-        }
+      #instructions {
+        width: 100%;
+        height: 100%;
 
-        #instructions {
-            width: 100%;
-            height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-            font-size: 14px;
-            cursor: pointer;
-        }
+        text-align: center;
+        cursor: pointer;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="blocker">
-        <div id="instructions">
-            <p style="font-size:36px">
-                Click to play
-            </p>
-            <p>
-                Move: WASD<br />
-                Look: MOUSE
-            </p>
-        </div>
+      <div id="instructions">
+        <p style="font-size: 60px; font-weight: 700">
+          Tugas Besar Grafika Komputer
+        </p>
+        <p style="font-size: 40px; font-weight: 700">
+          Click
+          <p style="font-size: 20px; font-weight: 800; font-style: italic;">HERE</p><br>
+          <p style="font-size: 30px; font-weight: 700">to Play</p>
+        </p>
+        <p style="font-size: 20px; font-weight: 600">
+          Move: WASD<br />
+          Look: MOUSE
+        </p>
+        <p style="text-align: left; font-weight: 500">
+          1972019 - Jefta Benedict Ampouw<br />
+          2072014 - Jonathan Eka Putra Djojosantoso<br />
+          2072021 - Jeremia Daud Halim
+        </p>
+      </div>
     </div>
     <div id="pointer"></div>
     <!-- <button id="button1">Locked</button> -->
@@ -70,8 +76,7 @@
       }
     </script>
     <script type="module" src="index.js"></script>
-</body>
-
+  </body>
 </html>
 
 <!-- https://stackoverflow.com/questions/18546875/three-js-pointerlock-and-collision-detection -->
