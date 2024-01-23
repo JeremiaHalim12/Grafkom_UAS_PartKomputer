@@ -12,13 +12,13 @@ export function objectLoader(scene, pointerElement, cam) {
     pointerElement,
     cam,
     true,
-    { x: 4.2, y: 12.5, z: 5 },
+    { x: 4.2, y: 12.5, z: 3 },
     "buttonMouse",
-    7,
+    5,
     cam,
-    4,
+    4.2,
     15,
-    3
+    5,
   );
 
   // KEYBOARD
@@ -32,13 +32,13 @@ export function objectLoader(scene, pointerElement, cam) {
     pointerElement,
     cam,
     true,
-    { x: -2.7, y: 13, z: 5 },
+    { x: -2.7, y: 12.5, z: 3 },
     "buttonKeyboard",
-    7,
+    5,
     cam,
     -2.7,
     15,
-    3
+    6,
   );
 
   // MONITOR
@@ -52,13 +52,13 @@ export function objectLoader(scene, pointerElement, cam) {
     pointerElement,
     cam,
     true,
-    { x: -2.2, y: 14.5, z: 0.8 },
+    { x: -3, y: 15, z: 0.8 },
     "buttonMonitor",
-    5,
+    7,
     cam,
     -3,
     15,
-    0
+    4.5,
   );
 
   // PC
@@ -72,8 +72,13 @@ export function objectLoader(scene, pointerElement, cam) {
     pointerElement,
     cam,
     true,
-    { x: 10, y: 14.5, z: 0.8 },
-    "buttonPC"
+    { x: 8, y: 14.5, z: 1.4 },
+    "buttonPC",
+    7,
+    cam,
+    8,
+    15.5,
+    1.4,
   );
 }
 

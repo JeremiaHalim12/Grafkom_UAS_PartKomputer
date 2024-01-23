@@ -31,7 +31,7 @@ document.body.appendChild(renderer.domElement);
 let controls = new PointerLockControls(cam, renderer.domElement);
 let clock = new THREE.Clock();
 let pointerElement = document.querySelector("#pointer");
-controller.pointerCam(controls);
+controller.pointerCam(controls, pointerElement);
 
 // 3D MODEL
 

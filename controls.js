@@ -1,5 +1,4 @@
-export function pointerCam(controls) {
-  let pointerElement = document.querySelector("#pointer");
+export function pointerCam(controls, pointerElement) {
   const pointerX = window.innerWidth / 2;
   const pointerY = window.innerHeight / 2;
   pointerElement.style.left = pointerX + "px";
