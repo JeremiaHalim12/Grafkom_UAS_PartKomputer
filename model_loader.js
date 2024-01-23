@@ -25,7 +25,7 @@ export function modelLoader(
     50,
     0xff0000
   );
-  scene.add(arrow);
+  // scene.add(arrow);
 
   loader.load(filePath, (gltf) => {
     var loader = gltf.scene.children[0];
