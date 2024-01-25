@@ -1,6 +1,6 @@
-1972019 - Jefta Benedict Ampouw
-2072014 - Jonathan Eka Putra Djojosantoso
-2072021 - Jeremia Daud Halim
+1. 1972019 - Jefta Benedict Ampouw
+2. 2072014 - Jonathan Eka Putra Djojosantoso
+3. 2072021 - Jeremia Daud Halim
 
 Proyek tugas besar Grafika Komputer - Part Komputer (Keyboard, Mouse, Monitor, dan PC)
 
